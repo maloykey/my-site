@@ -1,3 +1,7 @@
+#!/bin/bash
+# Оновлюємо файл на справжній дизайн
+cat <<EOF > privat/index.html
+$(cat <<'INNER_EOF'
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,3 +24,11 @@
     </div>
 </body>
 </html>
+INNER_EOF
+)
+EOF
+
+# Відправляємо на GitHub автоматично
+git add .
+git commit -m "Авто-оновлення дизайну"
+git push
